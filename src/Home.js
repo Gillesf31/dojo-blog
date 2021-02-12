@@ -7,10 +7,17 @@ const Home = () => {
         {title: 'Welcome party', body: 'Lorem ipsum...', author: 'Auriane', id: 2},
         {title: 'Web dev tips', body: 'Lorem ipsum...', author: 'Gilles', id: 3}
     ]);
+
+    const handleDelete = (id) => {
+        const newArticles = articles.filter((article) => {
+            return article.id !== id;
+        });
+        setArticles(newArticles);
+    }
+
     return ( 
         <div className="home">
-            <BlogList articles={articles} title="All articles" />
-            <BlogList articles={articles.filter((article) => article.author === "Gilles")} title="Gilles' articles" />
+            <BlogList articles={articles} title="All articles" handleDelete={handleDelete}/>
         </div>
      );
 }
